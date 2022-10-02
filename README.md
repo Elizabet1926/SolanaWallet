@@ -2,10 +2,9 @@
 **SolanaWallet** is an Android toolbelt for interaction with the Solana network.
 
 ![language](https://img.shields.io/badge/Language-Kotlin-green)
-[![jitpack](https://img.shields.io/badge/support-jitpack-green)]
+![jitpack](https://img.shields.io/badge/support-jitpack-green)
 
 ![](Resource/Demo01.png)
-
 
 For more specific usage, please refer to the [demo](https://github.com/Elizabet1926/SolanaWallet/tree/master/app)
 
@@ -61,13 +60,13 @@ if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty() && 
             println(txid)
         }
     }
-    solanaweb?.solanaTokenTransfer(privateKey,
-        toAddress,
-        splTokenAddress,
-        endpoint = SolanaMainNet,
-        amount,
-        decimalPoints = 6.0,
-        onCompleted)
+solanaweb?.solanaTokenTransfer(privateKey,
+    toAddress,
+    splTokenAddress,
+    endpoint = SolanaMainNet,
+    amount,
+    decimalPoints = 6.0,
+    onCompleted)
 }
 ```
 For more specific usage, please refer to the [demo](https://github.com/Elizabet1926/SolanaWallet/tree/master/app)
