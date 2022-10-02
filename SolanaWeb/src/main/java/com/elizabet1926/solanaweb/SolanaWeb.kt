@@ -160,46 +160,6 @@ public class SolanaWeb(context: Context, _webView: WebView) {
         override fun onPageFinished(view: WebView?, url: String?) {
             println("onPageFinished")
         }
-
-//        override fun onLoadResource(view: WebView?, url: String?) {
-//            println("onLoadResource")
-//            println(url!!)
-//        }
-//
-//        override fun onReceivedHttpError(
-//            view: WebView?,
-//            request: WebResourceRequest?,
-//            errorResponse: WebResourceResponse?
-//        ) {
-//            println("onReceivedHttpError------")
-//        }
-//        override fun onPageCommitVisible(view: WebView?, url: String?) {
-//            println("onPageCommitVisible")
-//        }
-//
-//        @SuppressLint("WebViewClientOnReceivedSslError")
-//        override fun onReceivedSslError(
-//            view: WebView?,
-//            handler: SslErrorHandler?,
-//            error: SslError?
-//        ) {
-//            println("onReceivedSslError-------->")
-//            handler?.proceed()
-//        }
-//
-//        override fun onReceivedHttpAuthRequest(
-//            view: WebView?,
-//            handler: HttpAuthHandler?,
-//            host: String?,
-//            realm: String?
-//        ) {
-//            println("onReceivedHttpAuthRequest-------->")
-//        }
-//
-//        override fun onReceivedClientCertRequest(view: WebView?, request: ClientCertRequest?) {
-//            println("onReceivedClientCertRequest-------->")
-//
-//        }
     }
     //Allow Cross Domain
     private fun setAllowUniversalAccessFromFileURLs(webView: WebView) {
