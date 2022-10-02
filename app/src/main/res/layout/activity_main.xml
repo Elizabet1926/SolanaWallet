@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:layout_marginTop="150dp"
+        android:text="getSOLBalance"
+        android:textAllCaps="false"
+        android:id="@+id/getSOLBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="30dp"
+        android:text="getSPLTokenBalance"
+        android:textAllCaps="false"
+        android:id="@+id/getSPLTokenBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="30dp"
+        android:text="getTokenAccountsByOwner"
+        android:textAllCaps="false"
+        android:id="@+id/getTokenAccountsByOwner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:text="sendSOL"
+        android:textAllCaps="false"
+        android:id="@+id/btn_sendSOL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="30dp"
+        android:text="sendSPLToken"
+        android:textAllCaps="false"
+        android:id="@+id/btn_sendSPLToken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
