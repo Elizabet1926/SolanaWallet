@@ -17,7 +17,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.2'
+    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.3'
 }
 ```
 
