@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.webkit.*
 import java.lang.reflect.InvocationTargetException
 
-public const val SolanaMainNet: String = "https://solana-mainnet.phantom.tech/"
+public const val SolanaMainNet: String = "https://api.metaplex.solana.com/"
 public const val SolanaMainNet1: String = "https://solana.maiziqianbao.net"
 public const val SolanaMainNet2: String = "https://api.mainnet-beta.solana.com"
 public const val SolanaMainNet3: String = "https://solana-api.projectserum.com"
