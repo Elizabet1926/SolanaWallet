@@ -74,4 +74,4 @@ For more specific usage, please refer to the [demo](https://github.com/Elizabet1
 
 ## License
 
-TronWeb is released under the MIT license. [See LICENSE](https://github.com/Elizabet1926/SolanaWallet/blob/master/LICENSE) for details.
+SolanaWallet is released under the MIT license. [See LICENSE](https://github.com/Elizabet1926/SolanaWallet/blob/master/LICENSE) for details.
