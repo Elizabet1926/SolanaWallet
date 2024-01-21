@@ -17,7 +17,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.3'
+    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.4'
 }
 ```
 
@@ -39,9 +39,13 @@ val privateKey = ""
 val toAddress = ""
 val amount = ""
 if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty()) {
-    val onCompleted = {result : Boolean, txid: String ->
+   val onCompleted = {state : Boolean, txid: String,error:String ->
         this.runOnUiThread {
-            println(txid)
+            if (state){
+                hashValue?.text = txid
+            } else {
+                hashValue?.text = error
+            }
         }
     }
     solanaweb?.solanaTransfer(privateKey,toAddress,amount, endpoint = SolanaMainNet,onCompleted)
@@ -55,9 +59,13 @@ val toAddress = ""
 val amount = ""
 val splTokenAddress = ""
 if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty() && splTokenAddress.isNotEmpty()) {
-    val onCompleted = {result : Boolean, txid: String ->
+    val onCompleted = {state : Boolean, txid: String,error:String ->
         this.runOnUiThread {
-            println(txid)
+            if (state){
+                hashValue?.text = txid
+            } else {
+                hashValue?.text = error
+            }
         }
     }
 solanaweb?.solanaTokenTransfer(privateKey,
