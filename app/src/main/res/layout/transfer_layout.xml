@@ -20,14 +20,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/private_key"
         android:hint="privateKey input"
-        android:text="3dvCKD957oW22fs7G6LhXbbRQ7QdLWrvNzUCM8ZAaWJfFxBMJfRPt4CjdFB4qTWtVV7BRjdVnPS7qJagFqZvvaHa"/>
+        android:text="4osNN5q9yuqgD5BFn7NMt9CTEGtNxob4BzewPAz9BvbQftNSVadXbhuM1q9PENpzmk2sijAQnpigscEEfb4VKXms"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/receive_address"
         android:hint="receive address input "
-        android:text="Enx3p7cLUrt4CZeXNvc2hovjir51nN9yn1f81mwVkX7r"/>
+        android:text="5MJnpb13kxTY5ip9Mz1kNotDWdfG1TMnz4aA39edVYAz"/>
 
     <EditText
         android:layout_width="fill_parent"

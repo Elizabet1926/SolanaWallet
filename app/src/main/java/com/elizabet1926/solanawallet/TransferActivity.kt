@@ -74,9 +74,13 @@ class TransferActivity : AppCompatActivity() {
         val toAddress = receiveEditText?.text.toString()
         val amount = amountEditText?.text.toString()
         if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty()) {
-            val onCompleted = {result : Boolean, txid: String ->
+            val onCompleted = {state : Boolean, txid: String,error:String ->
                 this.runOnUiThread {
-                    hashValue?.text = txid
+                    if (state){
+                        hashValue?.text = txid
+                    } else {
+                        hashValue?.text = error
+                    }
                 }
             }
             solanaweb?.solanaTransfer(privateKey,toAddress,amount, endpoint = SolanaMainNet,onCompleted)
@@ -89,9 +93,13 @@ class TransferActivity : AppCompatActivity() {
         val amount = amountEditText?.text.toString()
         val splTokenAddress = SPLTokenEditText?.text.toString()
         if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty() && splTokenAddress.isNotEmpty()) {
-            val onCompleted = {result : Boolean, txid: String ->
+            val onCompleted = {state : Boolean, txid: String,error:String ->
                 this.runOnUiThread {
-                    hashValue?.text = txid
+                    if (state){
+                        hashValue?.text = txid
+                    } else {
+                        hashValue?.text = error
+                    }
                 }
             }
             solanaweb?.solanaTokenTransfer(privateKey,

@@ -54,10 +54,14 @@ class GetBalanceActivity : AppCompatActivity() {
     private fun getSOLBalance() {
         val address = address?.text.toString()
         if (address.isNotEmpty()) {
-            val onCompleted = {result : Boolean, amount: String ->
+            val onCompleted = {state : Boolean, amount: String,error: String ->
                 this.runOnUiThread {
                     val  titleTip = if(type == "SOL") "SOL Balance: " else "SPLToken Balance: "
-                    balance?.text = titleTip + amount
+                    if(state){
+                        balance?.text = titleTip + amount
+                    } else {
+                        balance?.text = error
+                    }
                 }
             }
             balance?.text = "fetching..."
@@ -69,10 +73,14 @@ class GetBalanceActivity : AppCompatActivity() {
         val address = address?.text.toString()
         val SPLTokenAddress = SPLTokenAddress?.text.toString()
         if (address.isNotEmpty() && SPLTokenAddress.isNotEmpty()) {
-            val onCompleted = {result : Boolean, amount: String ->
+            val onCompleted = {state : Boolean, amount: String,error: String ->
                 this.runOnUiThread {
                     val  titleTip = if(type == "SOL") "SOL Balance: " else "SPLToken Balance: "
-                    balance?.text = titleTip + amount
+                    if(state){
+                        balance?.text = titleTip + amount
+                    } else {
+                        balance?.text = error
+                    }
                 }
             }
             balance?.text = "fetching..."

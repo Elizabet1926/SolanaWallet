@@ -49,9 +49,13 @@ class GetTokenAccountsByOwnerActivity : AppCompatActivity() {
     private fun getTokenAccountsByOwner() {
         val address = address?.text.toString()
         if (address.isNotEmpty()) {
-            val onCompleted = {result : Boolean, tokenAccounts: String ->
+            val onCompleted = {state : Boolean, tokenAccounts: String,error: String ->
                 this.runOnUiThread {
-                    accountDetail?.setText(tokenAccounts)
+                    if (state){
+                        accountDetail?.setText(tokenAccounts)
+                    }else{
+                        accountDetail?.setText(error)
+                    }
                 }
             }
             accountDetail?.setText("fetching...")

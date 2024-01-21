@@ -47,7 +47,7 @@ public class SolanaWeb(context: Context, _webView: WebView) {
     }
     public fun getSOLBalance(address: String,
                               endpoint: String = SolanaMainNet,
-                              onCompleted: (Boolean,String) -> Unit) {
+                              onCompleted: (Boolean,String,String) -> Unit) {
         val data = java.util.HashMap<String, Any>()
         data["address"] = address
         data["endpoint"] = endpoint
@@ -56,9 +56,14 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 if (showLog) {
                     println(map)
                 }
-                val state =  map!!["result"] as Boolean
-                val balance = if (!state) "error" else  map["balance"] as String
-                onCompleted(state,balance)
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val balance =  map["balance"] as String
+                    onCompleted(state,balance,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
             }
         })
     }
@@ -66,7 +71,7 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                                   SPLTokenAddress: String = SPLTokenUSDT ,
                                   decimalPoints: Double = 6.0,
                                   endpoint: String = SolanaMainNet,
-                                  onCompleted: (Boolean,String) -> Unit) {
+                                  onCompleted: (Boolean,String,String) -> Unit) {
         val data = java.util.HashMap<String, Any>()
         data["address"] = address
         data["SPLTokenAddress"] = SPLTokenAddress
@@ -77,15 +82,20 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 if (showLog) {
                     println(map)
                 }
-                val state =  map!!["result"] as Boolean
-                val balance = if (!state) "error" else  map["balance"] as String
-                onCompleted(state,balance)
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val balance =  map["balance"] as String
+                    onCompleted(state,balance,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
             }
         })
     }
     public fun getTokenAccountsByOwner(address: String,
                                   endpoint: String = SolanaMainNet,
-                                  onCompleted: (Boolean,String) -> Unit) {
+                                  onCompleted: (Boolean,String,String) -> Unit) {
         val data = java.util.HashMap<String, Any>()
         data["address"] = address
         data["endpoint"] = endpoint
@@ -94,9 +104,14 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 if (showLog) {
                     println(map)
                 }
-                val state =  map!!["result"] as Boolean
-                val tokenAccountsJson = if (!state) "error" else  map["tokenAccounts"] as String
-                onCompleted(state,tokenAccountsJson)
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val tokenAccounts =  map["tokenAccounts"] as String
+                    onCompleted(state,tokenAccounts,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
             }
         })
     }
@@ -104,7 +119,7 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                                      toAddress: String,
                                         amount: String,
                                       endpoint: String = SolanaMainNet,
-                                     onCompleted: (Boolean,String) -> Unit) {
+                                     onCompleted: (Boolean,String,String) -> Unit) {
         val number = amount.toDouble() * Math.pow(10.0,9.0)
         val data = java.util.HashMap<String, Any>()
         data["toPublicKey"] = toAddress
@@ -116,9 +131,14 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 if (showLog) {
                     println(map)
                 }
-                val state =  map!!["result"] as Boolean
-                val txid = if (!state) "error" else  map["txid"] as String
-                onCompleted(state,txid)
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val txid =  map["txid"] as String
+                    onCompleted(state,txid,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
             }
         })
     }
@@ -128,7 +148,7 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                                    endpoint: String = SolanaMainNet,
                                         amount: String,
                                    decimalPoints:Double = 6.0,
-                                   onCompleted: (Boolean,String) -> Unit) {
+                                   onCompleted: (Boolean,String,String) -> Unit) {
         val number = amount.toDouble() * Math.pow(10.0,decimalPoints)
         val data = java.util.HashMap<String, Any>()
         data["toPublicKey"] = toAddress
@@ -142,9 +162,14 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 if (showLog) {
                     println(map)
                 }
-                val state =  map!!["result"] as Boolean
-                val txid = if (!state) "error" else  map["txid"] as String
-                onCompleted(state,txid)
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val txid =  map["txid"] as String
+                    onCompleted(state,txid,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
             }
         })
     }
