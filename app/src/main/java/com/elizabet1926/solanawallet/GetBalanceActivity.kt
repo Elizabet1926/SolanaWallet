@@ -1,12 +1,15 @@
 package com.elizabet1926.solanawallet
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.elizabet1926.solanaweb.SolanaWeb
 
@@ -24,6 +27,10 @@ class GetBalanceActivity : AppCompatActivity() {
         setContentView(R.layout.balance_layout)
         setupContent()
         getData()
+        showMyDialog()
+    }
+    private fun showMyDialog() {
+        DialogUtil.showAlertDialog(this)
     }
 
     private fun setupContent() {
@@ -88,7 +95,6 @@ class GetBalanceActivity : AppCompatActivity() {
         }
     }
     private fun getData() {
-        //接收传值
         val bundle: Bundle? = intent.extras
         if (bundle != null) {
             type = bundle.getString("type") ?: ""

@@ -4,36 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
+        android:text="createWallet"
+        android:textAllCaps="false"
+        android:id="@+id/createWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="importAccountFromMnemonic"
+        android:textAllCaps="false"
+        android:id="@+id/importAccountFromMnemonic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="importAccountFromPrivateKey"
+        android:textAllCaps="false"
+        android:id="@+id/importAccountFromPrivateKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
         android:text="getSOLBalance"
         android:textAllCaps="false"
         android:id="@+id/getSOLBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="getSPLTokenBalance"
         android:textAllCaps="false"
         android:id="@+id/getSPLTokenBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="getTokenAccountsByOwner"
         android:textAllCaps="false"
         android:id="@+id/getTokenAccountsByOwner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:text="estimatedSOLTransferCost"
+        android:textAllCaps="false"
+        android:id="@+id/btn_estimatedSOLTransferCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="estimatedSPLTokenTransferCost"
+        android:textAllCaps="false"
+        android:id="@+id/btn_estimatedSPLTokenTransferCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
         android:text="sendSOL"
         android:textAllCaps="false"
         android:id="@+id/btn_sendSOL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="sendSPLToken"
         android:textAllCaps="false"
         android:id="@+id/btn_sendSPLToken"

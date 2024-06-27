@@ -29,6 +29,11 @@
         <activity android:name=".TransferActivity"/>
         <activity android:name=".GetBalanceActivity"/>
         <activity android:name=".GetTokenAccountsByOwnerActivity"/>
+        <activity android:name=".CreateWalletActivity"/>
+        <activity android:name=".ImportFromMnemonicActivity"/>
+        <activity android:name=".ImportFromPrivateKeyActivity"/>
+        <activity android:name=".EstimatedTransferCostActivity"/>
+
     </application>
 
 </manifest>

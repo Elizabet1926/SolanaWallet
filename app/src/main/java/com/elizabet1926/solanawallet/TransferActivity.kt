@@ -29,6 +29,10 @@ class TransferActivity : AppCompatActivity() {
         setContentView(R.layout.transfer_layout)
         setupContent()
         getData()
+        showMyDialog()
+    }
+    private fun showMyDialog() {
+        DialogUtil.showAlertDialog(this)
     }
     private fun setupContent(){
         SPLTokenEditText  = findViewById(R.id.SPLTokenAddress)

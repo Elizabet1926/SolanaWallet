@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.webkit.*
 import java.lang.reflect.InvocationTargetException
 
-public const val SolanaMainNet: String = "https://api.metaplex.solana.com/"
+public const val SolanaMainNet: String = "https://methodical-small-fire.solana-mainnet.quiknode.pro/cd15a67501b37dd206c3e42bd992b9175cfe539d/"
 public const val SolanaMainNet1: String = "https://solana.maiziqianbao.net"
 public const val SolanaMainNet2: String = "https://api.mainnet-beta.solana.com"
 public const val SolanaMainNet3: String = "https://solana-api.projectserum.com"
@@ -45,6 +45,68 @@ public class SolanaWeb(context: Context, _webView: WebView) {
         }
         bridge.register("generateSolanaWeb3",handler)
     }
+
+    public fun createWallet(onCompleted: (Boolean,String,String,String, String,) -> Unit) {
+        val data = java.util.HashMap<String, Any>()
+        bridge.call("createWallet", data, object : Callback {
+            override fun call(map: HashMap<String, Any>?){
+                if (showLog) {
+                    println(map)
+                }
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val privateKey =  map["privateKey"] as String
+                    val address =  map["publicKey"] as String
+                    val mnemonic =  map["mnemonic"] as String
+                    onCompleted(state,address,privateKey,mnemonic,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"","","",error)
+                }
+            }
+        })
+    }
+    public fun importAccountFromMnemonic(mnemonic: String,onCompleted: (Boolean,String,String, String) -> Unit) {
+        val data = java.util.HashMap<String, Any>()
+        data["mnemonic"] = mnemonic
+        bridge.call("importAccountFromMnemonic", data, object : Callback {
+            override fun call(map: HashMap<String, Any>?){
+                if (showLog) {
+                    println(map)
+                }
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val privateKey =  map["privateKey"] as String
+                    val address =  map["publicKey"] as String
+                    onCompleted(state,address,privateKey,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"","",error)
+                }
+            }
+        })
+    }
+
+    public fun importAccountFromPrivateKey(privateKey: String,onCompleted: (Boolean,String, String) -> Unit) {
+        val data = java.util.HashMap<String, Any>()
+        data["privateKey"] = privateKey
+        bridge.call("importAccountFromPrivateKey", data, object : Callback {
+            override fun call(map: HashMap<String, Any>?){
+                if (showLog) {
+                    println(map)
+                }
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val address =  map["publicKey"] as String
+                    onCompleted(state,address,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
+            }
+        })
+    }
+
     public fun getSOLBalance(address: String,
                               endpoint: String = SolanaMainNet,
                               onCompleted: (Boolean,String,String) -> Unit) {
@@ -115,6 +177,66 @@ public class SolanaWeb(context: Context, _webView: WebView) {
             }
         })
     }
+
+    public fun estimatedSOLTransferCost(fromAddress: String,
+                                        toAddress: String,
+                                        amount: String,
+                                       endpoint: String = SolanaMainNet,
+                                       onCompleted: (Boolean,String,String) -> Unit) {
+        val number = amount.toDouble() * Math.pow(10.0,9.0)
+        val data = java.util.HashMap<String, Any>()
+        data["toPublicKey"] = toAddress
+        data["fromPublicKey"] = fromAddress
+        data["amount"] = number
+        data["endpoint"] = endpoint
+        bridge.call("estimatedSOLTransferCost", data, object : Callback {
+            override fun call(map: HashMap<String, Any>?){
+                if (showLog) {
+                    println(map)
+                }
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val cost =  map["estimatedSOLTransferCost"] as String
+                    onCompleted(state,cost,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
+            }
+        })
+    }
+
+    public fun estimatedSPLTokenTransferCost(privateKey: String,
+                                             toAddress: String,
+                                             mintAddress: String,
+                                             decimalPoints: Double = 6.0,
+                                             amount: String,
+                                       endpoint: String = SolanaMainNet,
+                                       onCompleted: (Boolean,String,String) -> Unit) {
+        val number = amount.toDouble() * Math.pow(10.0,decimalPoints)
+        val data = java.util.HashMap<String, Any>()
+        data["toPublicKey"] = toAddress
+        data["privateKey"] = privateKey
+        data["mint"] = mintAddress
+        data["toPublicKey"] = toAddress
+        data["amount"] = number
+        data["endpoint"] = endpoint
+        bridge.call("estimatedSPLTokenTransferCost", data, object : Callback {
+            override fun call(map: HashMap<String, Any>?){
+                if (showLog) {
+                    println(map)
+                }
+                val state =  map!!["state"] as Boolean
+                if (state) {
+                    val cost =  map["cost"] as String
+                    onCompleted(state,cost,"")
+                } else {
+                    val error =  map["error"] as String
+                    onCompleted(false,"",error)
+                }
+            }
+        })
+    }
     public fun solanaTransfer(privateKey: String,
                                      toAddress: String,
                                         amount: String,
@@ -133,8 +255,8 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 }
                 val state =  map!!["state"] as Boolean
                 if (state) {
-                    val txid =  map["txid"] as String
-                    onCompleted(state,txid,"")
+                    val signature = map["signature"] as String
+                    onCompleted(state,signature,"")
                 } else {
                     val error =  map["error"] as String
                     onCompleted(false,"",error)
@@ -164,8 +286,8 @@ public class SolanaWeb(context: Context, _webView: WebView) {
                 }
                 val state =  map!!["state"] as Boolean
                 if (state) {
-                    val txid =  map["txid"] as String
-                    onCompleted(state,txid,"")
+                    val signature =  map["signature"] as String
+                    onCompleted(state,signature,"")
                 } else {
                     val error =  map["error"] as String
                     onCompleted(false,"",error)
