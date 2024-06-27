@@ -17,7 +17,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 dependencies {
-    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.4'
+    implementation 'com.github.Elizabet1926:SolanaWallet:1.0.5'
 }
 ```
 
@@ -31,6 +31,77 @@ if (solanaweb?.isGenerateTronWebInstanceSuccess == false) {
 } else  {
     if (type == "SOL") SOLTransfer() else SPLTokenTransfer()
 }
+```
+##### Create Wallet
+```Kotlin
+val onCompleted = {state : Boolean, address : String, privateKey:String, mnemonic:String,error: String ->
+        this.runOnUiThread {
+            if(state){
+              val text = "address: " + address + "\n\n" +
+                      "mnemonic: " + mnemonic + "\n\n" +
+                      "privateKey: " + privateKey
+                wallet?.setText(text)
+            } else {
+                wallet?.setText(error)
+            }
+        }
+    }
+    solanaWeb?.createWallet(onCompleted = onCompleted)
+
+```
+##### Import Account From Mnemonic
+```Kotlin
+val mnemonic = mnemonic?.text.toString()
+if (mnemonic.isNotEmpty()) {
+val onCompleted = {state : Boolean, address : String, privateKey:String,error: String ->
+    this.runOnUiThread {
+        if(state){
+            val text = "address: " + address + "\n\n" +
+                    "mnemonic: " + mnemonic + "\n\n" +
+                    "privateKey: " + privateKey
+            accountDetail?.setText(text)
+        } else {
+            accountDetail?.setText(error)
+        }
+    }
+}
+solanaWeb?.importAccountFromMnemonic(mnemonic,onCompleted = onCompleted)
+
+```
+##### Import Account From PrivateKey
+```Kotlin
+val privateKey = privateKey?.text.toString()
+if (privateKey.isNotEmpty()) {
+val onCompleted = {state : Boolean, address: String,error: String ->
+    this.runOnUiThread {
+        if(state){
+            val text = "address: " + address + "\n\n" +
+                    "privateKey: " + privateKey
+            accountDetail?.setText(text)
+        } else {
+            accountDetail?.setText(error)
+        }
+    }
+}
+solanaWeb?.importAccountFromPrivateKey(privateKey,onCompleted = onCompleted)
+```
+##### Estimate SOL Cost
+```Kotlin
+val fromAddress = senderAddress?.text.toString()
+val toAddress = receiveAddress?.text.toString()
+val amount = amount?.text.toString()
+if (fromAddress.isNotEmpty() && toAddress.isNotEmpty() && amount.isNotEmpty()) {
+val onCompleted = {state : Boolean, cost: String,error: String ->
+    this.runOnUiThread {
+        val  titleTip = if(type == "SOLTransfer") "SOL Transfer: " else "SPLToken Transfer: "
+        if(state){
+            estimateCostTextView?.text = titleTip + "estimated cost $cost SOL"
+        } else {
+            estimateCostTextView?.text = error
+        }
+    }
+}
+solanaWeb?.estimatedSOLTransferCost(fromAddress,toAddress,amount,onCompleted = onCompleted)
 ```
 
 ##### Send SOL
@@ -51,6 +122,25 @@ if (toAddress.isNotEmpty() && amount.isNotEmpty() && privateKey.isNotEmpty()) {
     solanaweb?.solanaTransfer(privateKey,toAddress,amount, endpoint = SolanaMainNet,onCompleted)
 }
 
+```
+##### Estimate SPL Token Cost
+```Kotlin
+val privateKey = ""
+val toAddress = receiveAddress?.text.toString()
+val amount = amount?.text.toString()
+val SPLTokenAddress = SPLTokenAddress?.text.toString()
+if (SPLTokenAddress.isNotEmpty() && toAddress.isNotEmpty() && amount.isNotEmpty()) {
+val onCompleted = {state : Boolean, cost: String,error: String ->
+    this.runOnUiThread {
+        val  titleTip = if(type == "SOLTransfer") "SOL Transfer: " else "SPLToken Transfer: "
+        if(state){
+            estimateCostTextView?.text = titleTip + "estimated cost $cost SOL"
+        } else {
+            estimateCostTextView?.text = error
+        }
+    }
+}
+solanaWeb?.estimatedSPLTokenTransferCost(privateKey,toAddress,SPLTokenAddress,6.0,amount,onCompleted = onCompleted)
 ```
 ##### Send SPLToken
 ```Kotlin
