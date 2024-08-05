@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.elizabet1926.solanaweb.SolanaMainNet1
 import com.elizabet1926.solanaweb.SolanaWeb
 
 class GetBalanceActivity : AppCompatActivity() {
@@ -72,7 +73,7 @@ class GetBalanceActivity : AppCompatActivity() {
                 }
             }
             balance?.text = "fetching..."
-            solanaWeb?.getSOLBalance(address,onCompleted = onCompleted)
+            solanaWeb?.getSOLBalance(address, SolanaMainNet1,onCompleted = onCompleted)
         }
     }
     @SuppressLint("SetTextI18n")
