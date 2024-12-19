@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.elizabet1926.solanaweb.SolanaMainNet1
 import com.elizabet1926.solanaweb.SolanaWeb
 
 class GetTokenAccountsByOwnerActivity : AppCompatActivity() {
@@ -63,7 +64,7 @@ class GetTokenAccountsByOwnerActivity : AppCompatActivity() {
                 }
             }
             accountDetail?.setText("fetching...")
-            solanaWeb?.getTokenAccountsByOwner(address,onCompleted = onCompleted)
+            solanaWeb?.getTokenAccountsByOwner(address,endpoint = SolanaMainNet1,onCompleted = onCompleted)
         }
     }
 }

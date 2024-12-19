@@ -92,7 +92,7 @@ class GetBalanceActivity : AppCompatActivity() {
                 }
             }
             balance?.text = "fetching..."
-            solanaWeb?.getSPLTokenBalance(address,onCompleted = onCompleted)
+            solanaWeb?.getSPLTokenBalance(address, endpoint = SolanaMainNet1,onCompleted = onCompleted)
         }
     }
     private fun getData() {

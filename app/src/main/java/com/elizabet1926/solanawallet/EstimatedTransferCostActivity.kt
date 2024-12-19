@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.elizabet1926.solanaweb.SolanaMainNet
+import com.elizabet1926.solanaweb.SolanaMainNet1
 import com.elizabet1926.solanaweb.SolanaWeb
 
 class EstimatedTransferCostActivity : AppCompatActivity() {
@@ -75,7 +76,7 @@ class EstimatedTransferCostActivity : AppCompatActivity() {
                     }
                 }
             }
-            solanaWeb?.estimatedSOLTransferCost(fromAddress,toAddress,amount,onCompleted = onCompleted)
+            solanaWeb?.estimatedSOLTransferCost(fromAddress,toAddress,amount,endpoint = SolanaMainNet1,onCompleted = onCompleted)
         }
     }
 
@@ -98,7 +99,7 @@ class EstimatedTransferCostActivity : AppCompatActivity() {
                     }
                 }
             }
-            solanaWeb?.estimatedSPLTokenTransferCost(privateKey,toAddress,SPLTokenAddress,6.0,amount,onCompleted = onCompleted)
+            solanaWeb?.estimatedSPLTokenTransferCost(privateKey,toAddress,SPLTokenAddress,6.0,amount, endpoint = SolanaMainNet1 ,onCompleted = onCompleted)
         }
     }
     private fun getData() {

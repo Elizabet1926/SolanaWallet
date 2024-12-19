@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.elizabet1926.solanaweb.SolanaMainNet
+import com.elizabet1926.solanaweb.SolanaMainNet1
 import com.elizabet1926.solanaweb.SolanaWeb
 
 class TransferActivity : AppCompatActivity() {
@@ -87,7 +88,7 @@ class TransferActivity : AppCompatActivity() {
                     }
                 }
             }
-            solanaweb?.solanaTransfer(privateKey,toAddress,amount, endpoint = SolanaMainNet,onCompleted)
+            solanaweb?.solanaTransfer(privateKey,toAddress,amount, endpoint = SolanaMainNet1,onCompleted)
 
         }
     }
@@ -109,7 +110,7 @@ class TransferActivity : AppCompatActivity() {
             solanaweb?.solanaTokenTransfer(privateKey,
                 toAddress,
                 splTokenAddress,
-                endpoint = SolanaMainNet,
+                endpoint = SolanaMainNet1,
                 amount,
                 decimalPoints = 6.0,
                 onCompleted)
