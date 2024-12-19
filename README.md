@@ -8,6 +8,14 @@
 
 For more specific usage, please refer to the [demo](https://github.com/Elizabet1926/SolanaWallet/tree/master/app)
 
+### Highly Important Forward Guidance
+
+```
+I used the node "https://solana.maiziqianbao.net/" to test SOL transfers, SPL Token transfers, and other features,
+all of which were successful. However, SPL Token transfers using this node are relatively slow, taking about 20 seconds. 
+Therefore, I recommend purchasing nodes from https://www.quicknode.com/.
+```
+
 ## JitPack.io
 
 I strongly recommend https://jitpack.io
